@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
 import {
   Entypo,
   MaterialIcons,
@@ -8,13 +8,18 @@ export default function Header() {
   return (
     <View style={styles.container}>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
-        <Entypo
+        {/* <Entypo
           name="youtube"
           size={28}
           color="red"
           style={{ marginLeft: 5 }}
+        /> */}
+        <Image
+          source={require("../../assets/Flash.png")}
+          alt="Logo"
+          style={{ width: 30, height: 35 }}
         />
-        <Text style={styles.title}>You Tube</Text>
+        <Text style={styles.title}>Flash Tube</Text>
       </View>
       <View
         style={{

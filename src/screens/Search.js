@@ -1,10 +1,30 @@
-import { TextInput, View, StyleSheet } from "react-native";
+import {
+  TextInput,
+  View,
+  StyleSheet,
+  FlatList,
+  ActivityIndicator
+} from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import MiniCard from "../components/MiniCard";
 
 const SearchScreen = () => {
   const [Value, setValue] = useState("");
+  const [Data, setData] = useState([]);
+  const [Loading, setLoading] = useState(false);
+
+  const fetchData = () => {
+    setLoading(true);
+    fetch(
+      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${Value}&type=video&key=AIzaSyDJ2Aokb-PrmRzbUHZHLdRksXAWV9Zwx-o`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setLoading(false);
+        setData(data.items);
+      });
+  };
   return (
     <View style={styles.container}>
       <View style={styles.boxA}>
@@ -23,9 +43,27 @@ const SearchScreen = () => {
             color: "#eeeeee"
           }}
         />
-        <MaterialIcons name="send" size={30} color="#eeeeee" />
+        <MaterialIcons
+          name="send"
+          size={30}
+          color="#eeeeee"
+          onPress={() => fetchData()}
+        />
       </View>
-      <MiniCard />
+      {Loading && <ActivityIndicator size="large" color="#eeeeee" />}
+      <FlatList
+        data={Data}
+        renderItem={({ item, index }) => {
+          return (
+            <MiniCard
+              videoId={item.id.videoId}
+              title={item.snippet.title}
+              channel={item.snippet.channelTitle}
+            />
+          );
+        }}
+        keyExtractor={(item) => item.id.videoId}
+      />
     </View>
   );
 };
