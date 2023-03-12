@@ -31,6 +31,7 @@ const Home = () => {
           // You can return any component that you like here!
           return <MaterialIcons name={iconName} size={size} color={color} />;
         },
+        headerShown: false,
         tabBarActiveTintColor: "tomato",
         tabBarInactiveTintColor: "gray"
       })}
@@ -43,7 +44,6 @@ const Home = () => {
 };
 export default function App() {
   return (
-    // <View style={styles.container}>
     <NavigationContainer>
       <StatusBar />
       <Stack.Navigator
@@ -57,7 +57,6 @@ export default function App() {
         <Stack.Screen name="videoPlayer" component={VideoPlayer} />
       </Stack.Navigator>
     </NavigationContainer>
-    // </View>
   );
 }
 

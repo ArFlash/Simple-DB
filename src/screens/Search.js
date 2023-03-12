@@ -8,8 +8,10 @@ import {
 import { MaterialIcons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import MiniCard from "../components/MiniCard";
+import { useNavigation } from "@react-navigation/native";
 
 const SearchScreen = () => {
+  const navigation = useNavigation();
   const [Value, setValue] = useState("");
   const [Data, setData] = useState([]);
   const [Loading, setLoading] = useState(false);
@@ -28,7 +30,12 @@ const SearchScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.boxA}>
-        <MaterialIcons name="search" size={30} color="#eeeeee" />
+        <MaterialIcons
+          name="keyboard-backspace"
+          size={30}
+          color="#eeeeee"
+          onPress={() => navigation.goBack()}
+        />
         <TextInput
           value={Value}
           onChangeText={(text) => setValue(text)}
