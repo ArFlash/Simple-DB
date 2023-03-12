@@ -21,11 +21,11 @@ const Home = () => {
           let iconName;
 
           if (route.name === "Home") {
-            iconName = "explore";
+            iconName = "home";
           } else if (route.name === "Explore") {
             iconName = "explore";
           } else if (route.name === "Subscribe") {
-            iconName = "explore";
+            iconName = "subscriptions";
           }
 
           // You can return any component that you like here!
