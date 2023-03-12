@@ -1,19 +1,12 @@
 import { Text, View, StyleSheet, Image } from "react-native";
-import {
-  Entypo,
-  MaterialIcons,
-  MaterialCommunityIcons
-} from "@expo/vector-icons";
+import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+
 export default function Header() {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
-        {/* <Entypo
-          name="youtube"
-          size={28}
-          color="red"
-          style={{ marginLeft: 5 }}
-        /> */}
         <Image
           source={require("../../assets/Flash.png")}
           alt="Logo"
@@ -32,6 +25,7 @@ export default function Header() {
           size={28}
           style={{ marginHorizontal: 5 }}
           color="#eeeeee"
+          onPress={() => navigation.navigate("Search")}
         />
         <MaterialCommunityIcons
           name="account"
