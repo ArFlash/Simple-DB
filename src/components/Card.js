@@ -1,7 +1,11 @@
 import { Text, View, StyleSheet, Image, Dimensions } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useSelector } from "react-redux";
 
 const Card = () => {
+  const Data = useSelector((state) => {
+    state.Data;
+  });
   return (
     <View style={styles.container}>
       <Image source={require("../doremon.jpeg")} style={styles.thumbnail} />
@@ -10,6 +14,9 @@ const Card = () => {
           name="account-circle"
           size={35}
           color="#eeeeee"
+          onPress={() => {
+            console.warn(Data);
+          }}
         />
         <View style={{ marginLeft: 10 }}>
           <Text

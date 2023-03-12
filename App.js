@@ -8,6 +8,8 @@ import VideoPlayer from "./src/screens/Video";
 import Explore from "./src/screens/Explore";
 import Subscribe from "./src/screens/Subscribe";
 import SearchScreen from "./src/screens/Search";
+import { Provider } from "react-redux";
+import store from "./src/store/store";
 
 const Stack = createNativeStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -17,7 +19,7 @@ const Home = () => {
     <Tabs.Navigator
       initialRouteName="Home"
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
+        tabBarIcon: ({ color, size }) => {
           let iconName;
 
           if (route.name === "Home") {
@@ -44,19 +46,21 @@ const Home = () => {
 };
 export default function App() {
   return (
-    <NavigationContainer>
-      <StatusBar />
-      <Stack.Navigator
-        initialRouteName="rootHome"
-        screenOptions={{
-          headerShown: false
-        }}
-      >
-        <Stack.Screen name="rootHome" component={Home} />
-        <Stack.Screen name="Search" component={SearchScreen} />
-        <Stack.Screen name="videoPlayer" component={VideoPlayer} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <StatusBar />
+        <Stack.Navigator
+          initialRouteName="rootHome"
+          screenOptions={{
+            headerShown: false
+          }}
+        >
+          <Stack.Screen name="rootHome" component={Home} />
+          <Stack.Screen name="Search" component={SearchScreen} />
+          <Stack.Screen name="videoPlayer" component={VideoPlayer} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
