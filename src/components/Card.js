@@ -1,14 +1,15 @@
 import { Text, View, StyleSheet, Image, Dimensions } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { useSelector } from "react-redux";
 
-const Card = () => {
-  const Data = useSelector((state) => {
-    state.Data;
-  });
+const Card = (props) => {
   return (
     <View style={styles.container}>
-      <Image source={require("../doremon.jpeg")} style={styles.thumbnail} />
+      <Image
+        source={{
+          uri: `https://i.ytimg.com/vi/${props.videoId}/hqdefault.jpg`
+        }}
+        style={styles.thumbnail}
+      />
       <View style={styles.boxA}>
         <MaterialCommunityIcons
           name="account-circle"
@@ -28,9 +29,11 @@ const Card = () => {
             ellipsizeMode="tail"
             numberOfLines={2}
           >
-            This is an Demo title and this is only for this tutorial
+            {props.title}
           </Text>
-          <Text style={{ fontSize: 13, color: "#eeeeee" }}>Demo Channel</Text>
+          <Text style={{ fontSize: 13, color: "#eeeeee" }}>
+            {props.channel}
+          </Text>
         </View>
       </View>
     </View>

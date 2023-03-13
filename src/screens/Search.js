@@ -64,7 +64,7 @@ const SearchScreen = () => {
       {Loading && <ActivityIndicator size="large" color="#eeeeee" />}
       <FlatList
         data={Data}
-        renderItem={({ item, index }) => {
+        renderItem={({ item }) => {
           return (
             <MiniCard
               videoId={item.id.videoId}
