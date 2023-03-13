@@ -9,8 +9,11 @@ import { MaterialIcons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import MiniCard from "../components/MiniCard";
 import { useNavigation } from "@react-navigation/native";
+import { add } from "../store/dataSlice";
+import { useDispatch } from "react-redux";
 
 const SearchScreen = () => {
+  const dispatch = useDispatch();
   const navigation = useNavigation();
   const [Value, setValue] = useState("");
   const [Data, setData] = useState([]);
@@ -25,6 +28,7 @@ const SearchScreen = () => {
       .then((data) => {
         setLoading(false);
         setData(data.items);
+        dispatch(add(data.items));
       });
   };
   return (
@@ -60,7 +64,7 @@ const SearchScreen = () => {
       {Loading && <ActivityIndicator size="large" color="#eeeeee" />}
       <FlatList
         data={Data}
-        renderItem={({ item, index }) => {
+        renderItem={({ item }) => {
           return (
             <MiniCard
               videoId={item.id.videoId}
