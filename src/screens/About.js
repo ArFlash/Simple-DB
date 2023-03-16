@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Header from "../components/Header";
 
-const Explore = () => {
+const About = () => {
   return (
     <View style={styles.container}>
       <Header />
@@ -11,7 +11,7 @@ const Explore = () => {
   );
 };
 
-export default Explore;
+export default About;
 
 const styles = StyleSheet.create({
   container: {

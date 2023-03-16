@@ -13,7 +13,7 @@ export default function HomeScreen() {
 
   useEffect(() => {
     fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=top10video&type=video&key=AIzaSyDJ2Aokb-PrmRzbUHZHLdRksXAWV9Zwx-o`
+      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=New Lofi Songs&type=video&key=AIzaSyDJ2Aokb-PrmRzbUHZHLdRksXAWV9Zwx-o`
     )
       .then((res) => res.json())
       .then((data) => {
