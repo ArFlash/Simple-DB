@@ -22,7 +22,7 @@ const SearchScreen = () => {
   const fetchData = () => {
     setLoading(true);
     fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${Value}&type=video&key=AIzaSyDJ2Aokb-PrmRzbUHZHLdRksXAWV9Zwx-o`
+      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${Value}&type=video&key=AIzaSyDoC1G19_Ow0_G8XsgYMj0y4LYb4Jd7Xxk`
     )
       .then((res) => res.json())
       .then((data) => {
